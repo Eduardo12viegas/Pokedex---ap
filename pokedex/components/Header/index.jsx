@@ -7,5 +7,28 @@ const imageSource = require("@/assets/images/header.jpg");
 
 export default function Header({ title, back = false }) {
     const router = useRouter();
-}
+
+    return (
+        <View styles={styles.container}>
+        <View style={styles.imageContainer}>
+            <Image source={imageSource} style={styles.image}/>
+            </View>   
+        <View style={styles.titleContainer}>
+            <View style={{ flexDirection: "row", aligItems: "center" }}>
+        {
+            back  &&
+            <Pressable onPress={() => router.back()} style={styles.backButton}>
+                <Ionicons name="arrow-back" size={28} color="black"/>
+        </Pressable>
+                }  
+                <Text style={styles.title}>{title}</Text>  
+                </View>
+                <Text style={{ fontSize: 16 }}>
+                    {!back ? "Encontre seu pokemon favorito aqui" : "Aqui está o seu pokemon"}
+                  
+                    </Text>  
+            </View>
+            </View>
+      );
+    }
 
